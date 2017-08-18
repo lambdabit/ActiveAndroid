@@ -1,11 +1,11 @@
 package com.activeandroid.automigration;
 
-import java.util.ArrayList;
-import java.util.Locale;
+import android.text.TextUtils;
 
 import com.activeandroid.util.SQLiteUtils.SQLiteType;
 
-import android.text.TextUtils;
+import java.util.ArrayList;
+import java.util.Locale;
 
 public class SQLColumnInfo {
 
@@ -26,7 +26,15 @@ public class SQLColumnInfo {
 		this.mColumnDefinition = TextUtils.join(" ", tokens.subList(1, tokens.size()));
 
 		this.mName = tokens.get(0);
-		this.mType = SQLiteType.valueOf(tokens.get(1).toUpperCase(Locale.US));
+
+		String tokenString = tokens.get(1).toUpperCase(Locale.US);
+		if (tokenString.equals("VARCHAR")) {
+			this.mType = SQLiteType.TEXT;
+		} else if (tokenString.equals("BOOLEAN")) {
+			this.mType = SQLiteType.INTEGER;
+		} else {
+			this.mType = SQLiteType.valueOf(tokenString);
+		}
 
 	}
 
