@@ -28,7 +28,7 @@ public class SQLColumnInfo {
 		this.mName = tokens.get(0);
 
 		String tokenString = tokens.get(1).toUpperCase(Locale.US);
-		if (tokenString.equals("VARCHAR")) {
+		if (tokenString.equals("VARCHAR") || tokenString.equals("STRING") ) {
 			this.mType = SQLiteType.TEXT;
 		} else if (tokenString.equals("BOOLEAN")) {
 			this.mType = SQLiteType.INTEGER;
