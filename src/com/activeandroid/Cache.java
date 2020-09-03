@@ -20,7 +20,8 @@ import java.util.Collection;
 
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
-import android.support.v4.util.LruCache;
+
+import androidx.collection.LruCache;
 
 import com.activeandroid.serializer.TypeSerializer;
 import com.activeandroid.util.Log;
